@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const mockData = require('./datafile.js');
+
 
 const urlLogger = (request, response, next) => {
   console.log('Request URL: ', request.url);
@@ -17,7 +19,7 @@ app.use(express.static('public'));
 app.use('/sunsets', express.static(path.join(__dirname, 'sunsets')));
 
 app.get('/json', (request, response) => {
-  response.status(200).json({"name": "Jon"});
+  response.status(200).json(mockData);
 });
 
 app.listen(3000, () => {
